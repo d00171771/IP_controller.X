@@ -42,18 +42,18 @@ Rule of thumb: Always read inputs from PORTx and write outputs to LATx.
 /************************************************
 			Global Variables
 *************************************************/
-const unsigned char msg_ary[4][16] = {"DESIRED> ", "ACTUAL> ", 
-                                        "POT> ","ENTER_TO_ACCEPT?>"};
+const unsigned char msg_ary[4][16] = {"DESIRED", "ACTUAL", 
+                                        "POT"," ENTER"};
 
 const unsigned char * problem = "Problem";
 
 const unsigned char * startup = "Ready to go";
 typedef struct {
-    unsigned char DESIRED ;
-    unsigned char ACTUAL ;
+    unsigned char DESIRED1 ;
+    unsigned char ACTUAL1 ;
     
-}MOTOR_T;
-MOTOR_T motor1;
+}motor_t;
+motor_t motor1 = {10,20};
 
 										  
 
@@ -63,6 +63,7 @@ MOTOR_T motor1;
 void Initial(void);
 void Window(unsigned char num);
 void delay_s(unsigned char secs);
+void HeartBeat (void);
 
 
 /************************************************
@@ -76,7 +77,7 @@ void __interrupt myIsr(void)
     if(INTCONbits.TMR0IE && INTCONbits.TMR0IF) {
         
         Find_Button_Press();       //check the buttons every 10mS
-        WriteTimer0(40960); 
+        WriteTimer0(45536); 
         INTCONbits.TMR0IF = 0;  // clear this interrupt condition
         
         //Heartbeat signal
@@ -105,14 +106,15 @@ Bit_Mask Button_Press;
 void main ( void ) 
 {
 
-    unsigned char Temp_Value = 0;
+    
+    //unsigned char Temp_Value = 0;
     
     typedef  enum {RUN = 0,UPDATE_DESIRE} states;
     states  my_mch_state = UPDATE_DESIRE;
     
     Initial();
-    motor1.ACTUAL =0;
-    motor1.DESIRED =30;
+    motor1.ACTUAL1 =0;
+    motor1.DESIRED1 =30;
     HeartBeat();
     lcd_start ();
     lcd_cursor ( 0, 0 ) ;
@@ -121,10 +123,10 @@ void main ( void )
     delay_s(2);
     //Initial LCD Display
     Window(0);
-    lcd_cursor ( 10, 0 ) ;
-    lcd_display_value(A);
-    lcd_cursor ( 10, 1 ) ;
-    lcd_display_value(B);
+    lcd_cursor ( 8, 0 ) ;
+    lcd_display_value("DESIRED");
+    lcd_cursor ( 8, 1 ) ;
+    lcd_display_value("ACTUAL");
     
     while(1)
     {
@@ -160,30 +162,30 @@ void main ( void )
 		switch(my_mch_state)	
 		{
 			case RUN: 
-				lcd_cursor ( 10, 0 ) ;    //state actions
-                lcd_display_value(A);
-                lcd_cursor ( 10, 1 ) ;
-                lcd_display_value(B);
+				lcd_cursor ( 7, 0 ) ;    //state actions
+                lcd_display_value("DESIRED");
+                lcd_cursor ( 7, 1 ) ;
+                lcd_display_value("ACTUAL");
                 LATC = 0x01;
 				
 				break;
 			case UPDATE_DESIRE: 
-                if (ENTER_E)          //state actions with guard
-                    A = Temp_Value;
+                //if (ENTER_E)          //state actions with guard
+                  //  A = Temp_Value;
               //  if (UP_E)
                   //  Temp_Value++;
                 //if (DOWN_E)
                   //  Temp_Value = (Temp_Value != 0 ? Temp_Value - 1 : 0);
                 
-				lcd_cursor ( 10, 0 ) ;
-                lcd_display_value(A);
-				lcd_cursor ( 10, 1 ) ;
-                lcd_display_value(Temp_Value);
+				lcd_cursor ( 4, 0 ) ;
+                lcd_display_value("POT");
+				lcd_cursor ( 0, 1 ) ;
+                lcd_display_value("ENTER");
                 LATC= 0x02;
 				break;
 			
 			default: 
-				lcd_cursor ( 0, 0 ) ;
+				lcd_cursor ( 4, 0 ) ;
                 lcd_clear();
 				lcd_print ( problem );
                 LATC = 0x05;
@@ -234,12 +236,7 @@ void delay_s(unsigned char secs)
         
     }
 }
-void delay_100ms(void)
-{
-    unsigned char i;
-    for (i=0;i<4;i++)
-            __delay_ms(25);  //max value is 40 since this depends on the _delay() function which has a max number of cycles
-}
+
 void setup_clock (void) 
 {
     OSCCONbits.SCS1 = 1; // switch the oscilator 
@@ -251,7 +248,7 @@ void setup_clock (void)
 void HeartBeat (void)
 { 
 	LATCbits.LC7 = 1;
-    delay_100ms();
+    delay_s(1);
     LATCbits.LC7 = 0;
-    delay_100ms();
+    delay_s(1);
 }

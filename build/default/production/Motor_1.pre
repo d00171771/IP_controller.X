@@ -5121,25 +5121,26 @@ void lcd_display_int_value ( unsigned int value ) ;
 void lcd_command ( unsigned char in );
 
 # 45 "Motor_1.c"
-const unsigned char msg_ary[4][16] = {"DESIRED> ", "ACTUAL> ",
-"POT> ","ENTER_TO_ACCEPT?>"};
+const unsigned char msg_ary[4][16] = {"DESIRED", "ACTUAL",
+"POT"," ENTER"};
 
 const unsigned char * problem = "Problem";
 
 const unsigned char * startup = "Ready to go";
 typedef struct {
-unsigned char DESIRED ;
-unsigned char ACTUAL ;
+unsigned char DESIRED1 ;
+unsigned char ACTUAL1 ;
 
-}MOTOR_T;
-MOTOR_T motor1;
+}motor_t;
+motor_t motor1 = {10,20};
 
 # 63
 void Initial(void);
 void Window(unsigned char num);
 void delay_s(unsigned char secs);
+void HeartBeat (void);
 
-# 71
+# 72
 unsigned char count_test =0;
 void __interrupt myIsr(void)
 {
@@ -5148,7 +5149,7 @@ void __interrupt myIsr(void)
 if(INTCONbits.TMR0IE && INTCONbits.TMR0IF) {
 
 Find_Button_Press();
-WriteTimer0(40960);
+WriteTimer0(45536);
 INTCONbits.TMR0IF = 0;
 
 
@@ -5164,18 +5165,19 @@ count_test = 0;
 
 Bit_Mask Button_Press;
 
-# 105
+# 106
 void main ( void )
 {
 
-unsigned char Temp_Value = 0;
+
+
 
 typedef enum {RUN = 0,UPDATE_DESIRE} states;
 states my_mch_state = UPDATE_DESIRE;
 
 Initial();
-motor1.ACTUAL =0;
-motor1.DESIRED =30;
+motor1.ACTUAL1 =0;
+motor1.DESIRED1 =30;
 HeartBeat();
 lcd_start ();
 lcd_cursor ( 0, 0 ) ;
@@ -5184,10 +5186,10 @@ lcd_print ( startup ) ;
 delay_s(2);
 
 Window(0);
-lcd_cursor ( 10, 0 ) ;
-lcd_display_value(A);
-lcd_cursor ( 10, 1 ) ;
-lcd_display_value(B);
+lcd_cursor ( 8, 0 ) ;
+lcd_display_value("DESIRED");
+lcd_cursor ( 8, 1 ) ;
+lcd_display_value("ACTUAL");
 
 while(1)
 {
@@ -5223,27 +5225,25 @@ break;
 switch(my_mch_state)
 {
 case RUN:
-lcd_cursor ( 10, 0 ) ;
-lcd_display_value(A);
-lcd_cursor ( 10, 1 ) ;
-lcd_display_value(B);
+lcd_cursor ( 7, 0 ) ;
+lcd_display_value("DESIRED");
+lcd_cursor ( 7, 1 ) ;
+lcd_display_value("ACTUAL");
 LATC = 0x01;
 
 break;
 case UPDATE_DESIRE:
-if (Button_Press.B1)
-A = Temp_Value;
 
-# 178
-lcd_cursor ( 10, 0 ) ;
-lcd_display_value(A);
-lcd_cursor ( 10, 1 ) ;
-lcd_display_value(Temp_Value);
+# 180
+lcd_cursor ( 4, 0 ) ;
+lcd_display_value("POT");
+lcd_cursor ( 0, 1 ) ;
+lcd_display_value("ENTER");
 LATC= 0x02;
 break;
 
 default:
-lcd_cursor ( 0, 0 ) ;
+lcd_cursor ( 4, 0 ) ;
 lcd_clear();
 lcd_print ( problem );
 LATC = 0x05;
@@ -5294,12 +5294,7 @@ _delay((unsigned long)((40)*(8000000/4000.0)));
 
 }
 }
-void delay_100ms(void)
-{
-unsigned char i;
-for (i=0;i<4;i++)
-_delay((unsigned long)((25)*(8000000/4000.0)));
-}
+
 void setup_clock (void)
 {
 OSCCONbits.SCS1 = 1;
@@ -5311,7 +5306,7 @@ OSCCONbits.IRCF0 = 1;
 void HeartBeat (void)
 {
 LATCbits.LC7 = 1;
-delay_100ms();
+delay_s(1);
 LATCbits.LC7 = 0;
-delay_100ms();
+delay_s(1);
 }

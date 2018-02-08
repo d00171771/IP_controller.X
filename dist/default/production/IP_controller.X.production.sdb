@@ -10,8 +10,8 @@ Detected 1
 WaitForRelease 2
 Update 3
 ]
-"107 E:\IP_controller.X\Motor_1.c
-[e E4342 . `uc
+"112 E:\IP_controller.X\Motor_1.c
+[e E4345 . `uc
 RUN 0
 UPDATE_DESIRE 1
 ]
@@ -66,21 +66,23 @@ UPDATE_DESIRE 1
 "16 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic18\plib\Timers\t0write.c
 [v _WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
 [v i2_WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
-"67 E:\IP_controller.X\Motor_1.c
+"73 E:\IP_controller.X\Motor_1.c
 [v _myIsr myIsr `II(v  1 e 0 0 ]
-"100
+"106
 [v _main main `(v  1 e 0 0 ]
-"194
+"202
 [v _Initial Initial `(v  1 e 0 0 ]
-"211
+"219
 [v _Window Window `(v  1 e 0 0 ]
-"221
+"229
 [v _delay_s delay_s `(v  1 e 0 0 ]
+"248
+[v _HeartBeat HeartBeat `(v  1 e 0 0 ]
 "168 E:/Repositories/LCD_library/lcdlib_2016.c
 [v _lcd_init lcd_init `C[5]uc  1 e 5 0 ]
 "269 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4520.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S286 . 1 `uc 1 RC0 1 0 :1:0 
+[s S289 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -90,7 +92,7 @@ UPDATE_DESIRE 1
 `uc 1 RC7 1 0 :1:7 
 ]
 "497
-[s S295 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S298 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 SCK 1 0 :1:3 
@@ -99,7 +101,7 @@ UPDATE_DESIRE 1
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S304 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S307 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 SCL 1 0 :1:3 
@@ -108,20 +110,55 @@ UPDATE_DESIRE 1
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S313 . 1 `uc 1 T1CKI 1 0 :1:0 
+[s S316 . 1 `uc 1 T1CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 ]
-[s S317 . 1 `uc 1 . 1 0 :2:0 
+[s S320 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S320 . 1 `uc 1 . 1 0 :1:0 
+[s S323 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S323 . 1 `S286 1 . 1 0 `S295 1 . 1 0 `S304 1 . 1 0 `S313 1 . 1 0 `S317 1 . 1 0 `S320 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES323  1 e 1 @3970 ]
+[u S326 . 1 `S289 1 . 1 0 `S298 1 . 1 0 `S307 1 . 1 0 `S316 1 . 1 0 `S320 1 . 1 0 `S323 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES326  1 e 1 @3970 ]
 "1364
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
+[s S449 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"1412
+[s S458 . 1 `uc 1 LC0 1 0 :1:0 
+]
+[s S460 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+]
+[s S463 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LC2 1 0 :1:2 
+]
+[s S466 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LC3 1 0 :1:3 
+]
+[s S469 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LC4 1 0 :1:4 
+]
+[s S472 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LC5 1 0 :1:5 
+]
+[s S475 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LC6 1 0 :1:6 
+]
+[s S478 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S481 . 1 `S449 1 . 1 0 `S458 1 . 1 0 `S460 1 . 1 0 `S463 1 . 1 0 `S466 1 . 1 0 `S469 1 . 1 0 `S472 1 . 1 0 `S475 1 . 1 0 `S478 1 . 1 0 ]
+[v _LATCbits LATCbits `VES481  1 e 1 @3979 ]
 [s S64 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
@@ -165,14 +202,14 @@ UPDATE_DESIRE 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "4962
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-[s S410 . 1 `uc 1 SCS 1 0 :2:0 
+[s S417 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 IOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "6391
-[s S416 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S423 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 FLTS 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -180,11 +217,11 @@ UPDATE_DESIRE 1
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S424 . 1 `S410 1 . 1 0 `S416 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES424  1 e 1 @4051 ]
+[u S431 . 1 `S417 1 . 1 0 `S423 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES431  1 e 1 @4051 ]
 "6450
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
-[s S564 . 1 `uc 1 T0PS 1 0 :3:0 
+[s S654 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -192,20 +229,20 @@ UPDATE_DESIRE 1
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "6473
-[s S571 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S661 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 `uc 1 T0PS3 1 0 :1:3 
 `uc 1 . 1 0 :2:4 
 `uc 1 T016BIT 1 0 :1:6 
 ]
-[u S578 . 1 `S564 1 . 1 0 `S571 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES578  1 e 1 @4053 ]
+[u S668 . 1 `S654 1 . 1 0 `S661 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES668  1 e 1 @4053 ]
 "6538
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "6544
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S193 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S196 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -215,7 +252,7 @@ UPDATE_DESIRE 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "7001
-[s S202 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S205 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -224,7 +261,7 @@ UPDATE_DESIRE 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S211 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S214 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -233,7 +270,7 @@ UPDATE_DESIRE 1
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S220 . 1 `uc 1 . 1 0 :1:0 
+[s S223 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -242,19 +279,22 @@ UPDATE_DESIRE 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S229 . 1 `uc 1 . 1 0 :6:0 
+[s S232 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S233 . 1 `S193 1 . 1 0 `S202 1 . 1 0 `S211 1 . 1 0 `S220 1 . 1 0 `S229 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES233  1 e 1 @4082 ]
+[u S236 . 1 `S196 1 . 1 0 `S205 1 . 1 0 `S214 1 . 1 0 `S223 1 . 1 0 `S232 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES236  1 e 1 @4082 ]
 "45 E:\IP_controller.X\Motor_1.c
-[v _msg_ary msg_ary `C[10][16]uc  1 e 160 0 ]
-"50
+[v _msg_ary msg_ary `C[4][16]uc  1 e 64 0 ]
+"48
 [v _problem problem `*.25Cuc  1 e 2 0 ]
-"52
+"50
 [v _startup startup `*.25Cuc  1 e 2 0 ]
-"66
+[s S193 . 2 `uc 1 DESIRED1 1 0 `uc 1 ACTUAL1 1 1 ]
+"56
+[v _motor1 motor1 `S193  1 e 2 0 ]
+"72
 [v _count_test count_test `uc  1 e 1 0 ]
 [s S26 . 1 `uc 1 B0 1 0 :1:0 
 `uc 1 B1 1 0 :1:1 
@@ -265,23 +305,15 @@ UPDATE_DESIRE 1
 `uc 1 B6 1 0 :1:6 
 `uc 1 B7 1 0 :1:7 
 ]
-"88
+"94
 [u S35 . 1 `uc 1 Full 1 0 `S26 1 . 1 0 ]
 [v _Button_Press Button_Press `S35  1 e 1 0 ]
-"100
+"106
 [v _main main `(v  1 e 0 0 ]
 {
-"102
-[v main@A A `uc  1 a 1 36 ]
-"108
-[v main@my_mch_state my_mch_state `E4342  1 a 1 35 ]
-"103
-[v main@B B `uc  1 a 1 34 ]
-"105
-[v main@Temp_Value Temp_Value `uc  1 a 1 33 ]
-"104
-[v main@C C `uc  1 a 1 32 ]
-"191
+"113
+[v main@my_mch_state my_mch_state `E4345  1 a 1 32 ]
+"199
 } 0
 "189 E:/Repositories/LCD_library/lcdlib_2016.c
 [v _lcd_start lcd_start `(uc  1 e 1 0 ]
@@ -328,14 +360,14 @@ UPDATE_DESIRE 1
 [v ___awdiv@divisor divisor `i  1 p 2 21 ]
 "42
 } 0
-"211 E:\IP_controller.X\Motor_1.c
+"219 E:\IP_controller.X\Motor_1.c
 [v _Window Window `(v  1 e 0 0 ]
 {
 [v Window@num num `uc  1 a 1 wreg ]
 [v Window@num num `uc  1 a 1 wreg ]
-"213
+"221
 [v Window@num num `uc  1 a 1 31 ]
-"218
+"226
 } 0
 "215 E:/Repositories/LCD_library/lcdlib_2016.c
 [v _lcd_print lcd_print `(uc  1 e 1 0 ]
@@ -391,30 +423,17 @@ UPDATE_DESIRE 1
 [v lcd_raw_send@in in `uc  1 a 1 22 ]
 "112
 } 0
-"194 E:\IP_controller.X\Motor_1.c
+"202 E:\IP_controller.X\Motor_1.c
 [v _Initial Initial `(v  1 e 0 0 ]
 {
-"209
-} 0
-"221
-[v _delay_s delay_s `(v  1 e 0 0 ]
-{
-[v delay_s@secs secs `uc  1 a 1 wreg ]
-"223
-[v delay_s@i i `uc  1 a 1 22 ]
-[v delay_s@j j `uc  1 a 1 21 ]
-"221
-[v delay_s@secs secs `uc  1 a 1 wreg ]
-"224
-[v delay_s@secs secs `uc  1 a 1 20 ]
-"230
+"217
 } 0
 "16 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic18\plib\Timers\t0write.c
 [v _WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
 {
-[u S604 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
+[u S694 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
 "18
-[v WriteTimer0@timer timer `S604  1 a 2 21 ]
+[v WriteTimer0@timer timer `S694  1 a 2 21 ]
 "16
 [v WriteTimer0@timer0 timer0 `ui  1 p 2 19 ]
 "24
@@ -428,16 +447,34 @@ UPDATE_DESIRE 1
 [v OpenTimer0@config config `uc  1 a 1 19 ]
 "31
 } 0
-"67 E:\IP_controller.X\Motor_1.c
+"248 E:\IP_controller.X\Motor_1.c
+[v _HeartBeat HeartBeat `(v  1 e 0 0 ]
+{
+"254
+} 0
+"229
+[v _delay_s delay_s `(v  1 e 0 0 ]
+{
+[v delay_s@secs secs `uc  1 a 1 wreg ]
+"231
+[v delay_s@i i `uc  1 a 1 22 ]
+[v delay_s@j j `uc  1 a 1 21 ]
+"229
+[v delay_s@secs secs `uc  1 a 1 wreg ]
+"232
+[v delay_s@secs secs `uc  1 a 1 20 ]
+"238
+} 0
+"73
 [v _myIsr myIsr `II(v  1 e 0 0 ]
 {
-"84
+"90
 } 0
 "16 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic18\plib\Timers\t0write.c
 [v i2_WriteTimer0 WriteTimer0 `(v  1 e 0 0 ]
 {
-[u S604 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
-[v i2WriteTimer0@timer WriteTimer0 `S604  1 a 2 2 ]
+[u S694 Timers 2 `ui 1 lt 2 0 `[2]uc 1 bt 2 0 ]
+[v i2WriteTimer0@timer WriteTimer0 `S694  1 a 2 2 ]
 [v i2WriteTimer0@timer0 timer0 `ui  1 p 2 0 ]
 "24
 } 0
